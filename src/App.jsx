@@ -6,6 +6,8 @@ import Header from "./components/Header";
 function App() {
   let [bookMarked, setBookMarked] = useState([]);
 
+  const [readTimes, setReadTime] = useState([])
+
 
   let total = 0;
   for(const book of bookMarked){
@@ -13,13 +15,14 @@ function App() {
     total += book.readTime;
   }
 
+  console.log(readTimes);
   return (
     <>
       <Header />
       <div className="container mx-auto w-[70%] grid grid-cols-1 sm:grid-cols-[3fr_1fr] justify-between gap-3">
         {/* left side  */}
 
-        <Cards bookMarked={bookMarked} setBookMarked={setBookMarked} />
+        <Cards bookMarked={bookMarked} setBookMarked={setBookMarked} readTimes={readTimes} setReadTime={setReadTime}/>
 
         {/* right side  */}
         <div>

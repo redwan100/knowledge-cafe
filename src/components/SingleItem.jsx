@@ -1,10 +1,23 @@
-const SingleItem = ({ item, bookMarked, setBookMarked }) => {
-
+const SingleItem = ({
+  item,
+  bookMarked,
+  setBookMarked,
+  readTimes,
+  setReadTime,
+}) => {
   const { author, authorImg, coverImg, title, createAt, readTime } = item;
-  const handleBookMark = (bookMark)=>{
-    const newBookMark = [...bookMarked, bookMark]
-    setBookMarked(newBookMark)
+
+  // -----Handle Book Functions-----
+  const handleBookMark = (bookMark) => {
+    const newBookMark = [...bookMarked, bookMark];
+    setBookMarked(newBookMark);
+  };
+
+  const handleReadTime = (time)=>{
+    const newReadTime = [...time, readTimes]
+    setReadTime(newReadTime)
   }
+
   return (
     <div className=" border-2 shadow-md p-3 rounded-md my-3">
       <img className="w-full rounded-md" src={coverImg} alt="" />
@@ -24,12 +37,14 @@ const SingleItem = ({ item, bookMarked, setBookMarked }) => {
         </div>
 
         <div>
-          {readTime} min read <span className="cursor-pointer">🔖</span>
+          {readTime} min read <span className="cursor-pointer" onClick={()=>handleReadTime(readTime)}>🔖</span>
         </div>
       </div>
       <h1 className="text-2xl font-semibold">{title}</h1>
 
-      <a onClick={()=>handleBookMark(item)} href="#">Mark as read</a>
+      <a onClick={() => handleBookMark(item)} href="#">
+        Mark as read
+      </a>
     </div>
   );
 };
