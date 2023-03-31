@@ -2,7 +2,7 @@ import React from 'react'
 
 const CommonAskQues = () => {
   return (
-    <div className='py-5'>
+    <div className='py-5 container mx-auto w-[90%]'>
       <h1 className="text-center text-3xl font-semibold py-5 my-5">
         Commonly Asked Questions
       </h1>

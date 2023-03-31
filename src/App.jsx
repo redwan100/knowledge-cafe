@@ -22,7 +22,6 @@ function App() {
   }
   return (
     <>
-  
       <Header />
       <div className="container mx-auto w-[90%] grid grid-cols-1 sm:grid-cols-[3fr_2fr] justify-between gap-3">
         {/* left side  */}
@@ -44,7 +43,8 @@ function App() {
 
           <div className="bg-slate-200 my-3 p-2">
             <h1 className="font-semibold text-2xl">
-              Bookmarked Blogs: <span className=" text-pink-600">{bookMarked.length}</span>
+              Bookmarked Blogs:{" "}
+              <span className=" text-pink-600">{bookMarked.length}</span>
             </h1>
             <div className="bg-slate-200">
               {bookMarked.map((item) => (
@@ -55,8 +55,8 @@ function App() {
             </div>
           </div>
         </div>
-      <CommonAskQues />
       </div>
+      <CommonAskQues />
     </>
   );
 }
