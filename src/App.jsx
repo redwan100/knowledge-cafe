@@ -24,7 +24,12 @@ function App() {
       <div className="container mx-auto w-[70%] grid grid-cols-1 sm:grid-cols-[3fr_1fr] justify-between gap-3">
         {/* left side  */}
 
-        <Cards bookMarked={bookMarked} setBookMarked={setBookMarked} readTimes={readTimes} setReadTime={setReadTime}/>
+        <Cards
+          bookMarked={bookMarked}
+          setBookMarked={setBookMarked}
+          readTimes={readTimes}
+          setReadTime={setReadTime}
+        />
 
         {/* right side  */}
         <div>
@@ -35,11 +40,13 @@ function App() {
           </div>
 
           <div className="bg-slate-200 my-3 p-2">
-            <h1>Bookmarked Blogs: {bookMarked.length}</h1>
+            <h1>
+              Bookmarked Blogs: <span className="text-lg font-semibold text-pink-600">{bookMarked.length}</span>
+            </h1>
             <div className="bg-slate-200">
               {bookMarked.map((item) => (
                 <div className="bg-slate-100 my-2">
-                  <h1>{item.title}</h1>
+                  <h1 className="p-1 font-semibold">{item.title}</h1>
                 </div>
               ))}
             </div>
