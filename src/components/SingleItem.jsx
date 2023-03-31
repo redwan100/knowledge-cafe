@@ -14,7 +14,7 @@ const SingleItem = ({
   };
 
   const handleReadTime = (time)=>{
-    const newReadTime = [...time, readTimes]
+    const newReadTime = [...readTimes, time]
     setReadTime(newReadTime)
   }
 

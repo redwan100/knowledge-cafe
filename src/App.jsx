@@ -10,12 +10,14 @@ function App() {
 
 
   let total = 0;
+  let totalTime = 0;
   for(const book of bookMarked){
-    console.log(book.readTime);
     total += book.readTime;
   }
 
-  console.log(readTimes);
+  for(const time of readTimes){
+    totalTime+= time
+  }
   return (
     <>
       <Header />
@@ -28,11 +30,11 @@ function App() {
         <div>
           <div className="bg-green-100 text-emerald-600 py-2 px-3 rounded-md font-semibold">
             <h1>
-              Spent time on read:<span>{total}</span>min
+              Spent time on read:<span>{totalTime}</span>min
             </h1>
           </div>
 
-          <div className="bg-slate-200 my-3">
+          <div className="bg-slate-200 my-3 p-2">
             <h1>Bookmarked Blogs: {bookMarked.length}</h1>
             <div className="bg-slate-200">
               {bookMarked.map((item) => (
