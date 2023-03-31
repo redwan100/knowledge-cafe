@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+  import { ToastContainer, toast } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
 const SingleItem = ({
   item,
   bookMarked,
@@ -8,17 +10,19 @@ const SingleItem = ({
   setReadTime,
 }) => {
   const [isBookMark, setIsBookMark] = useState(false)
+  const notify = () => toast("Already book mark is exit");
+  const addNotify = () => toast("Book mark is added");
   const { author, authorImg, coverImg, title, createAt, readTime } = item;
 
   // -----Handle Book Functions-----
   const handleBookMark = (bookMark) => {
     const exist = bookMarked.find((mark)=>mark === bookMark)
     if(exist){
-      console.log('already exists', bookMark);
-      return
+      notify()
     }else{
       const newBookMark = [...bookMarked, bookMark];
       setBookMarked(newBookMark);
+      addNotify()
     }
     setIsBookMark(true)
   };
@@ -41,14 +45,14 @@ const SingleItem = ({
           />
 
           <div className="text-sm">
-            <p>{author}</p>
-            <p>{createAt}</p>
+            <p className="text-lg font-semibold">{author}</p>
+            <p className="text-sm">{createAt}</p>
           </div>
         </div>
 
         <div className="flex items-center">
           {readTime} min read{" "}
-          <span className="cursor-pointer" onClick={() => handleBookMark(item)}>
+          <span className="cursor-pointer text-2xl" onClick={() => handleBookMark(item)}>
             {isBookMark ? (
               <i className="ri-bookmark-fill"></i>
             ) : (
@@ -59,9 +63,10 @@ const SingleItem = ({
       </div>
       <h1 className="text-2xl font-semibold">{title}</h1>
 
-      <a onClick={() => handleReadTime(readTime)} href="#">
+      <a onClick={() => handleReadTime(readTime)} href="#" className="text-rose-600 underline">
         Mark as read
       </a>
+      <ToastContainer />
     </div>
   );
 };
