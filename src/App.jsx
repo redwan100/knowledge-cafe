@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="container mx-auto w-[70%] grid grid-cols-1 sm:grid-cols-[3fr_1fr] justify-between gap-3">
+      <div className="container mx-auto w-[90%] grid grid-cols-1 sm:grid-cols-[3fr_2fr] justify-between gap-3">
         {/* left side  */}
 
         <Cards

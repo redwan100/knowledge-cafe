@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const SingleItem = ({
   item,
   bookMarked,
@@ -5,12 +7,20 @@ const SingleItem = ({
   readTimes,
   setReadTime,
 }) => {
+  const [isBookMark, setIsBookMark] = useState(false)
   const { author, authorImg, coverImg, title, createAt, readTime } = item;
 
   // -----Handle Book Functions-----
   const handleBookMark = (bookMark) => {
-    const newBookMark = [...bookMarked, bookMark];
-    setBookMarked(newBookMark);
+    const exist = bookMarked.find((mark)=>mark === bookMark)
+    if(exist){
+      console.log('already exists', bookMark);
+      return
+    }else{
+      const newBookMark = [...bookMarked, bookMark];
+      setBookMarked(newBookMark);
+    }
+    setIsBookMark(true)
   };
 
   const handleReadTime = (time)=>{
@@ -36,13 +46,20 @@ const SingleItem = ({
           </div>
         </div>
 
-        <div>
-          {readTime} min read <span className="cursor-pointer" onClick={()=>handleReadTime(readTime)}>🔖</span>
+        <div className="flex items-center">
+          {readTime} min read{" "}
+          <span className="cursor-pointer" onClick={() => handleBookMark(item)}>
+            {isBookMark ? (
+              <i className="ri-bookmark-fill"></i>
+            ) : (
+              <i className="ri-bookmark-line"></i>
+            )}
+          </span>
         </div>
       </div>
       <h1 className="text-2xl font-semibold">{title}</h1>
 
-      <a onClick={() => handleBookMark(item)} href="#">
+      <a onClick={() => handleReadTime(readTime)} href="#">
         Mark as read
       </a>
     </div>
