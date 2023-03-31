@@ -10,7 +10,7 @@ const SingleItem = ({
   setReadTime,
 }) => {
   const [isBookMark, setIsBookMark] = useState(false)
-  const notify = () => toast("Already book mark is exit");
+  const notify = () => toast("Already book mark is exist");
   const addNotify = () => toast("Book mark is added");
   const { author, authorImg, coverImg, title, createAt, readTime } = item;
 
@@ -52,7 +52,10 @@ const SingleItem = ({
 
         <div className="flex items-center">
           {readTime} min read{" "}
-          <span className="cursor-pointer text-2xl" onClick={() => handleBookMark(item)}>
+          <span
+            className="cursor-pointer text-2xl"
+            onClick={() => handleBookMark(item)}
+          >
             {isBookMark ? (
               <i className="ri-bookmark-fill"></i>
             ) : (
@@ -63,10 +66,26 @@ const SingleItem = ({
       </div>
       <h1 className="text-2xl font-semibold">{title}</h1>
 
-      <a onClick={() => handleReadTime(readTime)} href="#" className="text-rose-600 underline">
+      <a
+        onClick={() => handleReadTime(readTime)}
+        href="#"
+        className="text-rose-600 underline"
+      >
         Mark as read
       </a>
-      <ToastContainer />
+
+      {/* ===========Notify====== */}
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
